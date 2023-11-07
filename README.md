@@ -535,7 +535,7 @@ function resetCalculator() {
   <input type="number" value="1" min="1" max="1">
 </div>
 
-
+<div style="margin-bottom: 40px;"></div>
 
 <div>
     <label for="name">Employee's Name:</label>
