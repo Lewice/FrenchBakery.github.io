@@ -8,7 +8,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 245vh;
+      height: 225vh;
       text-align: center;
     }
 	.total-box {
