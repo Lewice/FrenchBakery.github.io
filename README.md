@@ -535,21 +535,7 @@ function resetCalculator() {
   <input type="number" value="1" min="1" max="1">
 </div>
 
-<h3>Misc.</h3>
 
-<div>
-  <input type="checkbox" id="MysteryGift" value="5000" >
-  <label for="MysteryBox">Mystery Gift - $5000</label>
-  <input type="number" value="1" min="1">
-</div>
-
-<div>
-  <input type="checkbox" id="MysteryGift" value="2500" >
-  <label for="MysteryBox">Mystery Gift(50% off) - $2500</label>
-  <input type="number" value="1" min="1">
-</div>
-
-<div style="margin-bottom: 100px;"></div>
 
 <div>
     <label for="name">Employee's Name:</label>
