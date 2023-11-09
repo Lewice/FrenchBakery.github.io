@@ -227,30 +227,7 @@ function resetCalculator() {
   <h2>Menu Items</h2>
 
   <div style="margin-bottom: 10px;"></div>
-  
-  <h3>Specials</h3>
 
-  <div style="margin-bottom: 10px;"></div>
-  
-  <div>
-    <input type="checkbox" id="Davechoice" value="1500$">
-    <label for="Davechoice">Uwu Daddy Specials - 1500$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="Davechoice" value="1500$">
-    <label for="Davechoice">UWU Mommy Special - 1500$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="Davechoice" value="250">
-    <label for="Davechoice">Basic Bitch Package - 250$</label>
-    <input type="number" value="1" min="1">
-  </div>
-
-  <!--This is where you change the combos with prices-->
   
   
   <h3> Combos </h3>
@@ -517,11 +494,15 @@ function resetCalculator() {
 <div style="margin-bottom: 10px;"></div>
   
   <h3> Discount Items</h3> 
-
+  <div>
+  <input type="checkbox" id="25off" value="-25%">
+  <label for="25off">Mech, EMS, LEO Disount - 25% off </label>
+  <input type="number" value="1" min="1" max="1">
+</div>
 
 <div>
   <input type="checkbox" id="30off" value="-30%">
-  <label for="30off">Mech, EMS, LEO Disount - 25% off </label>
+  <label for="30off">Non Fresh Items - 30% off</label>
   <input type="number" value="1" min="1" max="1">
 </div>
 
@@ -531,7 +512,21 @@ function resetCalculator() {
   <input type="number" value="1" min="1" max="1">
 </div>
 
-<div style="margin-bottom: 40px;"></div>
+<h3>Misc.</h3>
+
+<div>
+  <input type="checkbox" id="MysteryGift" value="5000" >
+  <label for="MysteryBox">Mystery Gift - $5000</label>
+  <input type="number" value="1" min="1">
+</div>
+
+<div>
+  <input type="checkbox" id="MysteryGift" value="2500" >
+  <label for="MysteryBox">Mystery Gift(50% off) - $2500</label>
+  <input type="number" value="1" min="1">
+</div>
+
+<div style="margin-bottom: 100px;"></div>
 
 <div>
     <label for="name">Employee's Name:</label>
