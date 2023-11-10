@@ -458,7 +458,7 @@ function resetCalculator() {
     <input type="number" value="1" min="1">
   </div>
   
-  <h4>Extras</h4>
+  <h3>Extras</h3>
   
   <div>
     <input type="checkbox" id="CatCupcake" value="100">
