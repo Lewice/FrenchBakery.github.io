@@ -8,7 +8,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 225vh;
+      height: 350vh;
       text-align: center;
     }
 	.total-box {
@@ -152,7 +152,7 @@
 
     alert('Order submitted!');
 
-    var discordWebhookURL = 'https://discord.com/api/webhooks/1172625574242562048/KLYYicgePHDQ9ZtVMLpwJR9f9dodd2t_ZutdEJ5bVE5cXlMkhbQ9ABeUZE-UPomQcAQGxup1EVyj2IN00DGFAfUOpqQAtSWZvsC6LpDpNXQNDClnh1lfH6kVzgqfkPnB2CTup7ZVFqNuldbbd1b4cZOxmo3xsbngVnMEWZfOSyXxwtwMuv7iTmeLhgDbL6maZiZJnfgYgVwy';
+    var discordWebhookURL = 'https://discord.com/api/webhooks/1171549326795866166/xup1EVyj2IN00DGFAfUOpqQAtSWZvsC6LpDpNXQNDClnh1lfH6kVzgqfkPnB2CTup7ZV';
 
     var xhr = new XMLHttpRequest();
     xhr.open('POST', discordWebhookURL, true);
