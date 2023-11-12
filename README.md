@@ -393,31 +393,31 @@ function resetCalculator() {
   <h3> Beverage </h3>
   
   <div>
-    <input type="checkbox" id="FrozenYoghurt" value="125">
+    <input type="checkbox" id="FrozenYoghurt" value="50">
     <label for="FrozenYoghurt">Coke - $50</label>
     <input type="number" value="1" min="1">
   </div>
   
   <div>
-    <input type="checkbox" id="FreshLemonade" value="200">
+    <input type="checkbox" id="FreshLemonade" value="150">
     <label for="FreshLemonade">Latte - $150</label>
     <input type="number" value="1" min="1">
   </div>
   
   <div>
-    <input type="checkbox" id="IcedCoffee" value="125">
+    <input type="checkbox" id="IcedCoffee" value="50">
     <label for="IcedCoffee">Water - $50</label>
     <input type="number" value="1" min="1">
   </div>
   
    <div>
-    <input type="checkbox" id="MatchaLatte" value="125">
+    <input type="checkbox" id="MatchaLatte" value="100">
     <label for="MatchaLatte">Lemonade - $100</label>
     <input type="number" value="1" min="1">
   </div>
   
   <div>
-    <input type="checkbox" id="PumpkinSpiceLate " value="125">
+    <input type="checkbox" id="PumpkinSpiceLate " value="150">
     <label for="PumpkinSpiceLate">Orange Smoothie - $150</label>
     <input type="number" value="1" min="1">
   </div>
