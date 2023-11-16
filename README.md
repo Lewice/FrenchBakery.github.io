@@ -295,6 +295,10 @@
       <input type="number" class="quantity" value="1" min="1">
     </label>
     <label>
+      <input type="checkbox" class="menu-item" data-price="200"> Charlotte - $200
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
       <input type="checkbox" class="menu-item" data-price="200"> Choux Pastry - $200
       <input type="number" class="quantity" value="1" min="1">
     </label>
