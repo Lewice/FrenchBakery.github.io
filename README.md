@@ -1,553 +1,375 @@
-
-<html>
+<html lang="en">
 <head>
-  <title>Menu Calculator</title>
-    <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 275vh;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>French Bakery</title>
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  <style>
+    body, h2, form, label, p, button, select, input {
+      font-size: 8;
+      margin-right: 10px; /* Add a margin for spacing */
+    }
+
+    label {
+      display: inline-block; /* Display as inline-block to make items appear beside each other */
+      margin-bottom: 5px;
+    }
+
+    body, h2, form {
       text-align: center;
     }
-	.total-box {
-		display: flex;
-		justify-content: center; /* Center horizontally */
-		align-items: center; /* Center vertically */
-		margin-top: 20px;
-	}}
-	
-	 .calculate-button {
-      width: 150px; /* Adjust the desired width */
-      height: 50px; /* Adjust the desired height */
+
+    p {
+      text-align: center;
+      margin: 0; /* Remove default margin for <p> */
     }
-	
-	.submit-button {
-      width: 150px; /* Adjust the desired width */
-      height: 40px; /* Adjust the desired height */
-    }
-	
-	.reset-button {
-      width: 150px; /* Adjust the desired width */
-      height: 30px; /* Adjust the desired height */
-    }
-    
-    h1 {
-      margin-bottom: 20px;
-    }
-    
-    h2 {
-      margin-top: 20px;
-    }
-	
-	h3 {
-      border: 1px solid black; /* Adjust the border style as needed */
-      padding: 5px; /* Add padding to create space around the heading */
-    }
-    
-    .menu-items {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-    
-    .menu-items div {
-      display: flex;
-      align-items: center;
-    }
-    
-    .total-box {
-      display: flex;
-      justify-content: flex-end;
-      align-self: Center;
-      margin-top: 20px;
-    }
-    
-    .button-container {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-    }
-	
-	.menu-items div img {
-      width: 50px; /* Adjust the desired width */
-      height: 50px; /* Adjust the desired height */
-      margin-left: 10px; /* Add margin as per your preference */
-    }
-    {
+
     button {
-      margin-top: 20px;
-	}}}}}}
+      margin-top: 10px;
+    }
+	body, h2 {
+	font-weight: bold;
+	}
+	body {
+	background-color: cyan;
+	}
   </style>
   <script>
-    function calculateTotal() {
-    var total = 0;
-    var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+    function calculateTotals() {
+  let total = 0;
 
-    checkboxes.forEach(function(checkbox) {
-      var quantityInput = checkbox.parentNode.querySelector('input[type="number"]');
-      var quantity = parseInt(quantityInput.value);
-      var price = parseFloat(checkbox.value);
+  // Calculate total from selected items
+  const menuItems = document.querySelectorAll('.menu-item:checked');
+  menuItems.forEach(item => {
+    const price = parseFloat(item.dataset.price);
+    const quantity = parseInt(item.nextElementSibling.value);
 
-      if (checkbox.value === '-25%') {
-        var itemPrice = total * 0.25;
-        total -= itemPrice;
-      } else if (checkbox.value === '-30%') {
-        var itemPrice = total * 0.3;
-        total -= itemPrice;
-      } else if (checkbox.value === '-50%') {
-        var itemPrice = total * 0.5;
-        total -= itemPrice;
-      } else {
+    if (!isNaN(price) && !isNaN(quantity) && quantity > 0) {
+      // Exclude "Mystery Box" from discounts
+      if (item.classList.contains('exclude-discount')) {
         total += price * quantity;
-      }
-    });
-
-    var totalElement = document.getElementById('total');
-    totalElement.textContent = total.toFixed(2);
-
-    var discountTotalElement = document.getElementById('discount-total');
-    var discount = total * 0.10;
-    discountTotalElement.textContent = discount.toFixed(2);
-  }
-
-
-    
-    function submitOrder() {
-    var name = document.getElementById('name').value;
-    if (name.trim() === '') {
-      alert('Please enter a name.');
-      return;
-    }
-
-    // Collect selected items and their quantities
-    var selectedItems = [];
-    var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-    checkboxes.forEach(function (checkbox) {
-      var itemName = checkbox.nextElementSibling.textContent;
-      var quantityInput = checkbox.parentNode.querySelector('input[type="number"]');
-      var quantity = parseInt(quantityInput.value);
-      var price = parseFloat(checkbox.value);
-      selectedItems.push({ name: itemName, quantity: quantity, price: price });
-    });
-
-    var total = 0;
-    var discountTotal = 0;
-
-    selectedItems.forEach(function (item) {
-      if (item.price < 0) {
-        var discountPercentage = Math.abs(item.price);
-        var itemDiscount = total * (discountPercentage / 100);
-        discountTotal += itemDiscount;
       } else {
-        total += item.price * item.quantity;
+        total += price * quantity * (1 - ($("#discount").val() / 100));
       }
-    });
+    }
+  });
 
-    var commission = (total * 0.10).toFixed(2);
-    var totalWithDiscount = total - discountTotal;
+  // Change commission rate from 5% to 10%
+  const commission = total * 0.10;
 
-    alert('Order submitted!');
+  document.getElementById('total').innerText = total.toFixed(2);
+  document.getElementById('commission').innerText = commission.toFixed(2);
+}
 
-    var discordWebhookURL = 'https://discord.com/api/webhooks/1171549326795866166/xup1EVyj2IN00DGFAfUOpqQAtSWZvsC6LpDpNXQNDClnh1lfH6kVzgqfkPnB2CTup7ZV';
-
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', discordWebhookURL, true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-
-    var message = {
-      content: 'New order!',
-      embeds: [{
-        title: 'Order Details',
-        fields: [
-          {
-            name: 'Name',
-            value: name,
-            inline: true
-          },
-          {
-            name: 'Total',
-            value: '$' + totalWithDiscount.toFixed(2),
-            inline: true
-          },
-          {
-            name: 'Discount Total',
-            value: '$' + discountTotal.toFixed(2),
-            inline: true
-          },
-          {
-            name: 'Commission (10%)',
-            value: '$' + commission,
-            inline: true
-          },
-          {
-            name: 'Ordered Items',
-            value: selectedItems.map(item => `${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`).join('\n'),
-            inline: false
-          }
-        ]
-      }]
-    };
-
-    xhr.send(JSON.stringify(message));
+    function SubForm() {
+  // Check if the employee name is provided
+  const employeeName = $("#employeeName").val();
+  if (employeeName.trim() === "") {
+    alert("Employee Name is required!");
+    return;
   }
 
-function resetCalculator() {
-  var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-  var quantityInputs = document.querySelectorAll('input[type="number"]');
-  
-  checkboxes.forEach(function(checkbox) {
-    checkbox.checked = false;
+  // Get selected menu items and quantities
+  const orderedItems = [];
+  const menuItems = document.querySelectorAll('.menu-item:checked');
+  menuItems.forEach(item => {
+    const itemName = item.parentNode.textContent.trim();
+    const price = parseFloat(item.dataset.price);
+    const quantity = parseInt(item.nextElementSibling.value);
+
+    if (!isNaN(price) && !isNaN(quantity) && quantity > 0) {
+      orderedItems.push({
+        name: itemName,
+        price: price,
+        quantity: quantity
+      });
+    }
   });
-  
-  quantityInputs.forEach(function(quantityInput) {
-    quantityInput.value = 1;
+
+  // Calculate total and commission
+  const total = parseFloat($("#total").text());
+  const commission = parseFloat($("#commission").text());
+  const discount = parseFloat($("#discount").val());
+
+  // Prepare data for Discord webhook
+  const discordData = {
+  username: "Menu Order Bot",
+  content: `New order submitted by ${employeeName}`,
+  embeds: [{
+    title: "Order Details",
+    fields: [
+      { name: "Employee Name", value: employeeName, inline: true },
+      { name: "Total", value: `$${total.toFixed(2)}`, inline: true },
+      { name: "Commission", value: `$${commission.toFixed(2)}`, inline: true },
+      { name: "Discount Applied", value: `${discount}%`, inline: true },
+      { name: "Items Ordered", value: orderedItems.map(item => `${item.quantity}x ${item.name}`).join('\n') }
+    ],
+    color: 0x00ff00 // You can customize the color
+  }]
+};
+
+  // Form Submission Logic for Spreadsheet
+  $.ajax({
+    url: "https://api.apispreadsheets.com/data/QByBDhiehCwmqJoZ/",
+    type: "post",
+    data: {
+      "Employee Name": employeeName,
+      "Total": total.toFixed(2),
+      "Commission": commission.toFixed(2),
+      "Items Ordered": JSON.stringify(orderedItems),
+      "Discount Applied": discount
+    },
+    success: function () {
+      alert("Form Data Submitted to Spreadsheet and Discord :)");
+      // Reset the form after submission
+      resetForm();
+    },
+    error: function () {
+      alert("There was an error :(");
+    }
   });
-  
-  document.getElementById('total').textContent = '0.00';
-}
-	function submitAndReset() {
-	submitOrder();
-	resetCalculator();
+
+  // Form Submission Logic for Discord webhook
+  $.ajax({
+    url: "https://discord.com/api/webhooks/1171549326795866166/xup1EVyj2IN00DGFAfUOpqQAtSWZvsC6LpDpNXQNDClnh1lfH6kVzgqfkPnB2CTup7ZV",
+    type: "post",
+    contentType: "application/json",
+    data: JSON.stringify(discordData),
+    success: function () {
+      // Do nothing specific for Discord success
+    },
+    error: function () {
+      console.error("Error sending data to Discord :(");
+    }
+  });
 }
 
+    function resetForm() {
+      // Reset checkboxes and quantity inputs
+      $('.menu-item').prop('checked', false);
+      $('.quantity').val(1);
+
+      // Reset totals
+      document.getElementById('total').innerText = '';
+      document.getElementById('commission').innerText = '';
+      // Reset discount dropdown to default
+      $("#discount").val("0");
+    }
   </script>
 </head>
 <body>
+
+  <h2>French Bakery</h2>
+
+  <form id="menuForm">
+  <h3>Combo's</h3>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="300"> PD COMBO - $300
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="400"> ROCK SOLID - $400
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="400"> JAM SLAM - $400
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	<label>
+      <input type="checkbox" class="menu-item" data-price="400"> AFTERNOON IN PARIS - $400
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
 	
-<div style="margin-bottom: 25px;"></div>
- 
-<body style="background-color:cyan;">
-	<img src="1698785119340.png" alt="Company Logo!">
-  <h1>Menu Calculator</h1>
-  
-  <h2>Menu Items</h2>
-
-  <div style="margin-bottom: 10px;"></div>
-
-  
-  
-  <h3> Combos </h3>
-  
-  <div>
-    <input type="checkbox" id="ColinChoice" value="300"><!--The price is the value, change that and then the name and itll change on the menu-->
-    <label for="ColinChoice">PD COMBO - $300</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="JudysChoice" value="400">
-    <label for="JudysChoice">ROCK SOLID - $400</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="Velmachoice" value="400$">
-    <label for="Velmachoice">JAM SLAM - $400</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="Davechoice" value="400$">
-    <label for="Davechoice">AFTERNOON IN PARIS - $400</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div style="margin-bottom: 10px;"></div>
- 
- 
- <h3> LATTE DEALS </h3>
- <div>
-    <input type="checkbox" id="cat10" value="1000">
-    <label for="cat10">10 - $1,000</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="cat20" value="2000">
-    <label for="cat20">20 - $2,000</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="cat30" value="3000">
-    <label for="cat30">30 - $3,000</label>
-    <input type="number" value="1" min="1">
-  </div>
-
-  <div>
-    <input type="checkbox" id="cat30" value="4000">
-    <label for="cat40">40 - $4,000</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-   <div>
-    <input type="checkbox" id="cat50" value="5000">
-    <label for="cat50">50 - $5,000</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="cat100" value="6000">
-    <label for="cat50">60 - $6,000</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-    <div>
-    <input type="checkbox" id="cat30" value="7000">
-    <label for="cat40">70 - $7,000</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-   <div>
-    <input type="checkbox" id="cat50" value="8000">
-    <label for="cat50">80 - $8,000</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="cat100" value="8500">
-    <label for="cat50">90 - $8,500</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="cat100" value="9000">
-    <label for="cat50">100 - $9,000</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  
-  <div style="margin-bottom: 10px;"></div>
-  
-  <h3> SMOOTHIE DEALS </h3>
- <div>
-    <input type="checkbox" id="cat10" value="1000">
-    <label for="cat10">10 - $1,000</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="cat20" value="2000">
-    <label for="cat20">20 - $2,000</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="cat30" value="3000">
-    <label for="cat30">30 - $3,000</label>
-    <input type="number" value="1" min="1">
-  </div>
-
-  <div>
-    <input type="checkbox" id="cat30" value="4000">
-    <label for="cat40">40 - $4,000</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-   <div>
-    <input type="checkbox" id="cat50" value="5000">
-    <label for="cat50">50 - $5,000</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div style="margin-bottom: 10px;"></div>
-  
-
-  
-   <h3> Sandwhiches </h3>
-  
-  <div>
-    <input type="checkbox" id="Salad" value="250">
-    <label for="Salad">Ham Sandwich - 250$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="FruitExplosion" value="250">
-    <label for="FruitExplosion">Turkey Sandwich - $250</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="TurkeySammie" value="250">
-    <label for="TurkeySammie">Beef Sandwich - $250</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-   <div>
-    <input type="checkbox" id="BeefSammie" value="250$">
-    <label for="BeefSammie">BLT Sandwich - $250</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
+	<h3>LATTE DEALS</h3>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="1000"> 10 - $1,000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="2000"> 20 - $2,000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="3000"> 30 - $3,000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	<label>
+      <input type="checkbox" class="menu-item" data-price="4000"> 40 - $4,000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="5000"> 50 - $5,000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="6000"> 60 - $6,000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	<label>
+      <input type="checkbox" class="menu-item" data-price="7000"> 70 - $7,000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="8000"> 80 - $8,000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="8500"> 90 - $8,500
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	<label>
+      <input type="checkbox" class="menu-item" data-price="9000"> 100 - $9,000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
 
 
-  
-  <div style="margin-bottom: 10px;"></div>
-  
-  
-  <h3> Beverage </h3>
-  
-  <div>
-    <input type="checkbox" id="FrozenYoghurt" value="50">
-    <label for="FrozenYoghurt">Coke - $50</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="FreshLemonade" value="150">
-    <label for="FreshLemonade">Latte - $150</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="IcedCoffee" value="50">
-    <label for="IcedCoffee">Water - $50</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-   <div>
-    <input type="checkbox" id="MatchaLatte" value="100">
-    <label for="MatchaLatte">Lemonade - $100</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="PumpkinSpiceLate " value="150">
-    <label for="PumpkinSpiceLate">Orange Smoothie - $150</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  
-  
-  <div style="margin-bottom: 10px;"></div>
-  
-    <h3> Dessert </h3>
-  
-  <div>
-    <input type="checkbox" id="HomemadeCatCookie" value="200">
-    <label for="HomemadeCatCookie">Bavarois - $200</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="AppleCrumble" value="200">
-    <label for="AppleCrumble">Bavarois - $200</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="CatDonut" value="200">
-    <label for="CatDonut">Choux Pastry - $200</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-<div>
-    <input type="checkbox" id="CatCupcake" value="200">
-    <label for="CatCupcake">Chocolate Eclair - $200</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="CatDonut" value="250">
-    <label for="CatDonut">Stack of Donuts - $250</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <h3>Extras</h3>
-  
-  <div>
-    <input type="checkbox" id="CatCupcake" value="100">
-    <label for="CatCupcake">Baguette - 100$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="CatCupcake" value="150">
-    <label for="CatCupcake">Salad - 150$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div style="margin-bottom: 10px;"></div>
-  
-  <h3> Delivery </h3>
-  
-  <div>
-    <input type="checkbox" id="CityDelivery" value="250">
-    <label for="CityDelivery">City Delivery - 250$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="Sandy" value="500">
-    <label for="Sandy">Sandy Delivery - 500$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div>
-    <input type="checkbox" id="Paleto" value="750">
-    <label for="Paleto">Paleto Delivery - 750$</label>
-    <input type="number" value="1" min="1">
-  </div>
-  
-  <div style="margin-bottom: 10px;"></div>
-  
-
-<div style="margin-bottom: 10px;"></div>
-  
-  <h3> Discount Items</h3> 
-  <div>
-  <input type="checkbox" id="25off" value="-30%">
-  <label for="25off">Mech, EMS, LEO Disount - 30% off </label>
-  <input type="number" value="1" min="1" max="1">
-</div>
-
-<div>
-  <input type="checkbox" id="50off" value="-50%">
-  <label for="50off">Employee Discount - 50% off</label>
-  <input type="number" value="1" min="1" max="1">
-</div>
+	
+	<h3>SMOOTHIE DEALS</h3>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="1000"> 10 - $1,000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="2000"> 20 - $2,000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="3000"> 30 - $3,000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	<label>
+      <input type="checkbox" class="menu-item" data-price="4000"> 40 - $4,000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="5000"> 50 - $5,000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
 
 
+	
+	<h3>Sandwhiches</h3>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="250"> Ham Sandwich - 250$
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="250"> Turkey Sandwich - $250
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="250"> Beef Sandwich - $250
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	<label>
+      <input type="checkbox" class="menu-item" data-price="250"> BLT Sandwich - $250
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
 
-<div style="margin-bottom: 100px;"></div>
+	
+	<h3>Beverage</h3>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="50"> Coke - $50
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	<label>
+      <input type="checkbox" class="menu-item" data-price="150"> Latte - $150
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="50"> Water - $50
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	<label>
+      <input type="checkbox" class="menu-item" data-price="100"> Lemonade - $100
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="150"> Orange Smoothie - $150
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	
+	<h3>Dessert</h3>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="200"> Bavarois - $200
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="200"> Choux Pastry - $200
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	label>
+      <input type="checkbox" class="menu-item" data-price="200"> Chocolate Eclair - $200
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="250"> Stack of Donuts - $250
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	
+	<h3>Extra's</h3>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="150"> Salad - 150$
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="100"> Baguette - 100$
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	
+	
+	<h3>Delivery</h3>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="250"> City Delivery - 250$
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	
+    <label>
+      <input type="checkbox" class="menu-item" data-price="500"> Sandy Delivery - 500$
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	<label>
+      <input type="checkbox" class="menu-item" data-price="750"> Paleto Delivery - 750$
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	
+	
+	
+	
+    	
+	
+	
+	
+	
+	<div style="margin-bottom: 30px;"></div>
+	
+	<label for="discount">Select Discount:</label>
+    <select id="discount" onchange="calculateTotals()">
+      <option value="0">No Discount</option>
+      <option value="50">50% Discount (Employee Discount)</option>
+	  <option value="30">Mech, EMS, LEO Discount</option>
+    </select>
+	
+	<div style="margin-bottom: 30px;"></div>
+	
 
-<div>
-    <label for="name">Employee's Name:</label>
-    <input type="text" id="name">
-  </div>
-  <p><b> Include Kitchen and Front staff in names section </b></p>
 
-<div style="margin-bottom: 25px;"></div>
- 
-<div class="total-box">
-  <span>Total: $</span>
-  <span id="total">0.00</span>
-</div>
+    <label for="employeeName">Employee Name:</label>
+    <input type="text" id="employeeName" required>
+	
+	<div style="margin-bottom: 30px;"></div>
+	
+	
 
-<div class="total-box">
-  <span>Commision (10%): $</span>
-  <span id="discount-total">0.00</span>
-</div>
+    <p>Total: $<span id="total"></span></p>
+    <p>Commission (10%): $<span id="commission"></span></p>
+	
+	<div style="margin-bottom: 30px;"></div>
 
+    <button type="button" onclick="calculateTotals()">Calculate</button>
+    <button type="button" onclick="SubForm()">Submit</button>
+    <button type="button" onclick="resetForm()">Reset</button>
+  </form>
 
-
-
- 
-  
-  
-  <div style="margin-bottom: 45px;"></div>
-  
-
-  <button class="calculate-button" onclick="calculateTotal()">Calculate Total</button>
-  <button class="submit-button" onclick="submitAndReset()">Submit Order</button>
-  <button class="reset-button" onclick="resetCalculator()">Reset</button>
-
- 
-  
-  
-  <div style="margin-bottom: 10px;"></div>
+</body>
+</html>
