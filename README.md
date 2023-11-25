@@ -55,7 +55,7 @@
   });
 
   // Change commission rate from 5% to 10%
-  const commission = total * 0.10;
+  const commission = total * 0.20;
 
   document.getElementById('total').innerText = total.toFixed(2);
   document.getElementById('commission').innerText = commission.toFixed(2);
@@ -366,7 +366,7 @@
 	
 
     <p>Total: $<span id="total"></span></p>
-    <p>Commission (10%): $<span id="commission"></span></p>
+    <p>Commission (20%): $<span id="commission"></span></p>
 	
 	<div style="margin-bottom: 30px;"></div>
 
