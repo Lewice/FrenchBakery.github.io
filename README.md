@@ -69,6 +69,13 @@
     return;
   }
 
+  // Check if the total is NaN
+  const total = parseFloat($("#total").text());
+  if (isNaN(total)) {
+    alert("Please hit the 'Calculate' button to calculate the total before submitting.");
+    return;
+  }
+
   // Get selected menu items and quantities
   const orderedItems = [];
   const menuItems = document.querySelectorAll('.menu-item:checked');
@@ -87,26 +94,23 @@
   });
 
   // Calculate total and commission
-  const total = parseFloat($("#total").text());
-  const commission = parseFloat($("#commission").text());
-  const discount = parseFloat($("#discount").val());
+  const commission = total * 0.20;
 
   // Prepare data for Discord webhook
   const discordData = {
-  username: "Menu Order Bot",
-  content: `New order submitted by ${employeeName}`,
-  embeds: [{
-    title: "Order Details",
-    fields: [
-      { name: "Employee Name", value: employeeName, inline: true },
-      { name: "Total", value: `$${total.toFixed(2)}`, inline: true },
-      { name: "Commission", value: `$${commission.toFixed(2)}`, inline: true },
-      { name: "Discount Applied", value: `${discount}%`, inline: true },
-      { name: "Items Ordered", value: orderedItems.map(item => `${item.quantity}x ${item.name}`).join('\n') }
-    ],
-    color: 0x00ff00 // You can customize the color
-  }]
-};
+    username: "Menu Order Bot",
+    content: `New order submitted by ${employeeName}`,
+    embeds: [{
+      title: "Order Details",
+      fields: [
+        { name: "Employee Name", value: employeeName, inline: true },
+        { name: "Total", value: `$${total.toFixed(2)}`, inline: true },
+        { name: "Commission", value: `$${commission.toFixed(2)}`, inline: true },
+        { name: "Items Ordered", value: orderedItems.map(item => `${item.quantity}x ${item.name}`).join('\n') }
+      ],
+      color: 0x00ff00 // You can customize the color
+    }]
+  };
 
   // Form Submission Logic for Spreadsheet
   $.ajax({
@@ -117,7 +121,7 @@
       "Total": total.toFixed(2),
       "Commission": commission.toFixed(2),
       "Items Ordered": JSON.stringify(orderedItems),
-      "Discount Applied": discount
+      "Discount Applied": parseFloat($("#discount").val())
     },
     success: function () {
       alert("Form Data Submitted to Spreadsheet and Discord :)");
