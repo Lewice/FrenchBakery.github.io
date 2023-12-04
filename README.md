@@ -183,6 +183,10 @@
       <input type="checkbox" class="menu-item" data-price="400"> AFTERNOON IN PARIS - $400
       <input type="number" class="quantity" value="1" min="1">
     </label>
+    <input type="checkbox" class="menu-item" data-price="250"> Queenie's Special - $250
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    
 	
 	<h3>LATTE DEALS</h3>
     <label>
