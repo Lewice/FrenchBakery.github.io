@@ -166,169 +166,160 @@
   <h2>French Bakery</h2>
 
   <form id="menuForm">
-  <h3>Combo's</h3>
+  <h3>Special's</h3>
     <label>
-      <input type="checkbox" class="menu-item" data-price="300"> PD COMBO - $300
+      <input type="checkbox" class="menu-item" data-price="1000"> GRAB & GO - $1000
       <input type="number" class="quantity" value="1" min="1">
     </label>
     <label>
-      <input type="checkbox" class="menu-item" data-price="400"> ROCK SOLID - $400
+      <input type="checkbox" class="menu-item" data-price="1500"> GRAB & GO - $1500
       <input type="number" class="quantity" value="1" min="1">
     </label>
     <label>
-      <input type="checkbox" class="menu-item" data-price="400"> JAM SLAM - $400
+      <input type="checkbox" class="menu-item" data-price="1200"> EMS/PD SPECIAL - $1200
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="1700"> Brooklyn Special - $1700
       <input type="number" class="quantity" value="1" min="1">
     </label>
 	<label>
-      <input type="checkbox" class="menu-item" data-price="400"> AFTERNOON IN PARIS - $400
+      <input type="checkbox" class="menu-item" data-price="1700"> TRINICITY SPECIAL - $1700
       <input type="number" class="quantity" value="1" min="1">
     </label>
   <label>
-    <input type="checkbox" class="menu-item" data-price="250"> Queenie's Special - $250
+    <input type="checkbox" class="menu-item" data-price="1200"> Cuban Special - $1200
+      <input type="number" class="quantity" value="1" min="1">
+  </label>
+  <label>
+    <input type="checkbox" class="menu-item" data-price="1400"> Brew Tea Full Special - $1400
       <input type="number" class="quantity" value="1" min="1">
   </label>
     
 	
-	<h3>LATTE DEALS</h3>
+	<h3>Tea Deals</h3>
     <label>
-      <input type="checkbox" class="menu-item" data-price="1000"> 10 - $1,000
+      <input type="checkbox" class="menu-item" data-price="1400"> 10 - $1,400
       <input type="number" class="quantity" value="1" min="1">
     </label>
     <label>
-      <input type="checkbox" class="menu-item" data-price="2000"> 20 - $2,000
+      <input type="checkbox" class="menu-item" data-price="2500"> 20 - $2,500
       <input type="number" class="quantity" value="1" min="1">
     </label>
     <label>
-      <input type="checkbox" class="menu-item" data-price="3000"> 30 - $3,000
+      <input type="checkbox" class="menu-item" data-price="3500"> 30 - $3,500
       <input type="number" class="quantity" value="1" min="1">
     </label>
 	<label>
-      <input type="checkbox" class="menu-item" data-price="4000"> 40 - $4,000
+      <input type="checkbox" class="menu-item" data-price="4500"> 40 - $4,500
       <input type="number" class="quantity" value="1" min="1">
     </label>
     <label>
-      <input type="checkbox" class="menu-item" data-price="5000"> 50 - $5,000
-      <input type="number" class="quantity" value="1" min="1">
-    </label>
-    <label>
-      <input type="checkbox" class="menu-item" data-price="6000"> 60 - $6,000
+      <input type="checkbox" class="menu-item" data-price="5500"> 50 - $5,500
       <input type="number" class="quantity" value="1" min="1">
     </label>
 	<label>
-      <input type="checkbox" class="menu-item" data-price="7000"> 70 - $7,000
+      <input type="checkbox" class="menu-item" data-price="9000"> 100 - $10,000
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+
+	<h3>Coffee Special Deals</h3>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="1400"> 10 - $1,400
       <input type="number" class="quantity" value="1" min="1">
     </label>
     <label>
-      <input type="checkbox" class="menu-item" data-price="8000"> 80 - $8,000
+      <input type="checkbox" class="menu-item" data-price="2500"> 20 - $2,500
       <input type="number" class="quantity" value="1" min="1">
     </label>
     <label>
-      <input type="checkbox" class="menu-item" data-price="8500"> 90 - $8,500
+      <input type="checkbox" class="menu-item" data-price="3500"> 30 - $3,500
       <input type="number" class="quantity" value="1" min="1">
     </label>
 	<label>
-      <input type="checkbox" class="menu-item" data-price="9000"> 100 - $9,000
+      <input type="checkbox" class="menu-item" data-price="4500"> 40 - $4,500
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="5500"> 50 - $5,500
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	<label>
+      <input type="checkbox" class="menu-item" data-price="9000"> 100 - $10,000
       <input type="number" class="quantity" value="1" min="1">
     </label>
 
 
 	
-	<h3>SMOOTHIE DEALS</h3>
-    <label>
-      <input type="checkbox" class="menu-item" data-price="1000"> 10 - $1,000
-      <input type="number" class="quantity" value="1" min="1">
-    </label>
-    <label>
-      <input type="checkbox" class="menu-item" data-price="2000"> 20 - $2,000
-      <input type="number" class="quantity" value="1" min="1">
-    </label>
-    <label>
-      <input type="checkbox" class="menu-item" data-price="3000"> 30 - $3,000
-      <input type="number" class="quantity" value="1" min="1">
-    </label>
-	<label>
-      <input type="checkbox" class="menu-item" data-price="4000"> 40 - $4,000
-      <input type="number" class="quantity" value="1" min="1">
-    </label>
-    <label>
-      <input type="checkbox" class="menu-item" data-price="5000"> 50 - $5,000
-      <input type="number" class="quantity" value="1" min="1">
-    </label>
-
-
-	
-	<h3>Sandwhiches</h3>
-    <label>
-      <input type="checkbox" class="menu-item" data-price="250"> Ham Sandwich - 250$
-      <input type="number" class="quantity" value="1" min="1">
-    </label>
-    <label>
-      <input type="checkbox" class="menu-item" data-price="250"> Turkey Sandwich - $250
-      <input type="number" class="quantity" value="1" min="1">
-    </label>
-    <label>
-      <input type="checkbox" class="menu-item" data-price="250"> Beef Sandwich - $250
-      <input type="number" class="quantity" value="1" min="1">
-    </label>
-	<label>
-      <input type="checkbox" class="menu-item" data-price="250"> BLT Sandwich - $250
-      <input type="number" class="quantity" value="1" min="1">
-    </label>
-
-	
-	<h3>Beverage</h3>
+	<h3>Drinks</h3>
     <label>
       <input type="checkbox" class="menu-item" data-price="50"> Coke - $50
       <input type="number" class="quantity" value="1" min="1">
     </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="75"> Lemonade - $75
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="100"> Orange Smoothie - $100
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
 	<label>
-      <input type="checkbox" class="menu-item" data-price="150"> Latte - $150
+      <input type="checkbox" class="menu-item" data-price="120"> Caribbean Smoothie - $120
       <input type="number" class="quantity" value="1" min="1">
     </label>
     <label>
-      <input type="checkbox" class="menu-item" data-price="50"> Water - $50
+      <input type="checkbox" class="menu-item" data-price="150"> Tea Pot Tea - $150
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="150"> Espresso - $150
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+
+
+
+	
+	<h3>Food</h3>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="50"> Ham Sandwich - $50
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="50"> Turkey Sandwich - $50
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="50"> BLT Sandwich - $50
       <input type="number" class="quantity" value="1" min="1">
     </label>
 	<label>
-      <input type="checkbox" class="menu-item" data-price="100"> Lemonade - $100
+      <input type="checkbox" class="menu-item" data-price="75"> Beef Sandwich - $75
       <input type="number" class="quantity" value="1" min="1">
     </label>
     <label>
-      <input type="checkbox" class="menu-item" data-price="150"> Orange Smoothie - $150
+      <input type="checkbox" class="menu-item" data-price="75"> Salad - $75
       <input type="number" class="quantity" value="1" min="1">
     </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="100"> Blueberry Muffin - $100
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+    <label>
+      <input type="checkbox" class="menu-item" data-price="100"> Chocolate Muffin - $100
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	<label>
+      <input type="checkbox" class="menu-item" data-price="150"> Carrot Cake - $150
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+	<label>
+      <input type="checkbox" class="menu-item" data-price="150"> Short Bread - $150 
+      <input type="number" class="quantity" value="1" min="1">
+    </label>
+
 	
-	<h3>Dessert</h3>
-    <label>
-      <input type="checkbox" class="menu-item" data-price="200"> Bavarois - $200
-      <input type="number" class="quantity" value="1" min="1">
-    </label>
-    <label>
-      <input type="checkbox" class="menu-item" data-price="200"> Charlotte - $200
-      <input type="number" class="quantity" value="1" min="1">
-    </label>
-    <label>
-      <input type="checkbox" class="menu-item" data-price="200"> Choux Pastry - $200
-      <input type="number" class="quantity" value="1" min="1">
-    </label>
-	label>
-      <input type="checkbox" class="menu-item" data-price="200"> Chocolate Eclair - $200
-      <input type="number" class="quantity" value="1" min="1">
-    </label>
-    <label>
-      <input type="checkbox" class="menu-item" data-price="250"> Stack of Donuts - $250
-      <input type="number" class="quantity" value="1" min="1">
-    </label>
 	
-	<h3>Extra's</h3>
-    <label>
-      <input type="checkbox" class="menu-item" data-price="150"> Salad - 150$
-      <input type="number" class="quantity" value="1" min="1">
-    </label>
-    <label>
-      <input type="checkbox" class="menu-item" data-price="100"> Baguette - 100$
-      <input type="number" class="quantity" value="1" min="1">
-    </label>
 	
 	
 	<h3>Delivery</h3>
