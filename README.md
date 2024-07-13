@@ -135,7 +135,7 @@
 
   // Form Submission Logic for Discord webhook
   $.ajax({
-    url: "https://discord.com/api/webhooks/1171549326795866166/xup1EVyj2IN00DGFAfUOpqQAtSWZvsC6LpDpNXQNDClnh1lfH6kVzgqfkPnB2CTup7ZV",
+    url: "https://discord.com/api/webhooks/1261489011105599518/_RUeD-SKV7U9g2K9TFRwDjLtxAX-dHZGZmwNMtvYNoUmCE9C7DzQn2dSA3j-Ug32cvdW",
     type: "post",
     contentType: "application/json",
     data: JSON.stringify(discordData),
@@ -163,7 +163,7 @@
 </head>
 <body>
 
-  <h2>French Bakery</h2>
+  <h2>Tea Pot</h2>
 
   <form id="menuForm">
   <h3>Special's</h3>
